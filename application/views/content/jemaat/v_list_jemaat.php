@@ -51,7 +51,7 @@
 			<tr>
 				<th>No</th>
 				<th>NIK</th>
-				<th>Nomor Keluarga</th>
+				<th>Nomor KK</th>
 				<th>Nama</th>
 				<th>Tempat Lahir</th>
 				<th>Tanggal Lahir</th>

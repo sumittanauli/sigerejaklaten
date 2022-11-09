@@ -23,8 +23,8 @@
 	<div class="card-body">
 		<form id="form-update-pindahjemaat" method="post" action="<?=site_url('pindahjemaat/update')?>"enctype="multipart/form-data">
 			<div class="form-group">
-				<label class="form-label">Nama Jemaat</label>
-				<input required type="text"value="<?=$pindahjemaat->nama_pindah_jemaat?>" class="form-control" name="nama_pindah_jemaat">
+				<label class="form-label">Nomor Surat</label>
+				<input required type="number" maxlength="16" value="<?=$pindahjemaat->nomor_surat_pindahjemaat?>" class="form-control" name="nomor_surat_pindahjemaat">
 			</div>
 			<div class="form-group">
 				<label class="form-label">Asal Gereja</label>
@@ -40,9 +40,9 @@
 			</div>
 			<div class="form-group">
 				<label class="form-label">Tahun Keluar</label>
-				<input required type="text"value="<?=$pindahjemaat->tahun_keluar?>" class="form-control" name="tahun_keluar">
+				<input required type="date"value="<?=$pindahjemaat->tahun_keluar?>" class="form-control" name="tahun_keluar">
 			</div>
-			<input type="hidden" name="id_pindah_jemaat" value="<?=$pindahjemaat->id_pindah_jemaat?>">
+			<input type="hidden" name="nik" value="<?=$pindahjemaat->nik?>">
 
 	</div>
 	<div class="card-footer">

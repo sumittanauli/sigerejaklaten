@@ -2,7 +2,7 @@ create database sistem_gereja;
 use sistem_gereja;
 
 create table jemaat(
-					   id_jemaat int not null primary key auto_increment,
+					   nik varchar(16) not null primary key,
 					   nomor_keluarga varchar(50) not null,
 					   nama_jemaat varchar(200) not null,
 					   tempat_lahir_jemaat varchar(200) not null,
@@ -15,21 +15,20 @@ create table jemaat(
 )
 
 create table baptis(
-	id_baptis int not null primary key auto_increment,
+	nik varchar(16) not null primary key,
 	nomor_surat_baptis varchar (50) not null,
-	nama_jemaat_baptis varchar(100) not null,
-	nama_pendeta_baptis varchar(100) not null,
+	id_pendeta int not null,
 	tempat_baptis varchar (100) not null,
 	tanggal_baptis date not null,
 	foto varchar(100)
 )
 
 create table nikah(
-	id_nikah int not null primary key auto_increment,
-	nomor_surat_nikah varchar(50) not null,
-	nama_jemaat_nikah1 varchar(100) not null,
-	nama_jemaat_nikah2 varchar(100) not null,
-	nama_pendeta_nikah varchar(200) not null,
+	nik varchar(16) not null primary key,
+	nomor_surat_nikah varchar(30) not null,
+	nik_suami varchar(16) not null,
+	nik_istri varchar(16) not null,
+	nama_pendeta_nikah varchar(50) not null,
 	tempat_nikah varchar(50) not null,
 	tanggal_nikah date not null,
 	tanggal_cerai date,
@@ -37,9 +36,8 @@ create table nikah(
 )
 
 create table pengurus(
-	id_pengurus int not null primary key auto_increment,
+	nik varchar(16) not null primary key,
 	nomor_surat_pengurus varchar(50) not null,
-	nama_pengurus varchar(200) not null,
 	asal_pengurus varchar(150) not null,
 	pendidikan_pengurus enum('Tidak Sekolah','SD', 'SMP', 'SLTA', 'SLTU', 'D1', 'D2', 'D3', 'S1', 'S2', 'Dll') not null,
 	tanggal_mulai_pengurus date not null,
@@ -49,7 +47,7 @@ create table pengurus(
 )
 
 create table pendeta(
-	id_pendeta int not null primary key auto_increment,
+	id_pendeta int not null primary key,
 	nomor_surat_pendeta varchar(30) not null,
 	nama_pendeta varchar(200) not null,
 	asal_pendeta varchar(150) not null,
@@ -62,20 +60,18 @@ create table pendeta(
 )
 
 create table pindahjemaat(
-    id_pindah_jemaat int not null primary key auto_increment,
-    nama_pindah_jemaat varchar(200) not null,
+    nik varchar(16) not null primary key auto_increment,
+    nomor_surat_pindahjemaat varchar(16) not null,
     asal_gereja varchar(100) not null,
     tujuan_gereja varchar(100) not null,
     tahun_masuk date not null,
-    tahun_keluar date not null,
-    foto varchar(100)
+    tahun_keluar date not null
 )
 
 create table cerai(
-	id_cerai int not null primary key auto_increment,
-	nomor_surat_cerai varchar(200) not null,
-	nama_jemaat_cerai1 varchar(200) not null,
-	nama_jemaat_cerai2 varchar(200) not null,
+	nomor_surat_cerai varchar(16) not null primary key,
+	nik_suami varchar(16) not null,
+	nik_istri varchar(16) not null,
 	tanggal_cerai date not null,
 	tempat_cerai varchar(200) not null,
 	alasan_cerai enum('Cerai Hidup','Cerai Mati', 'Dll') not null,
@@ -83,13 +79,11 @@ create table cerai(
 )
 
 create table mati(
-	id_mati int not null primary key auto_increment,
-	nomor_surat_mati varchar(200) not null,
-	nama_jemaat_mati varchar(200) not null,
+	nik varchar(16) not null primary key,
+	nomor_surat_mati varchar(16) not null,
 	tanggal_mati date not null,
 	tempat_mati varchar(200) not null,
-	alasan_mati enum('Faktor Umur','Penyakit', 'Kecelakaan', 'Dll') not null,
-	foto varchar(100)
+	alasan_mati enum('Faktor Umur','Penyakit', 'Kecelakaan', 'Dll') not null
 )
 
 create table user_access_menu(

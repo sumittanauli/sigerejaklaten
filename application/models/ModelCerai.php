@@ -3,12 +3,17 @@
 class ModelCerai extends CI_Model
 {
 	var $table = "cerai";
-	var $primaryKey = "id_cerai";
+	var $primaryKey = "nik";
 
 	// function untuk get all data cerai
-	public function getAll()
+	public function getAll($method = '')
 	{
-		return $this->db->get($this->table)->result();
+		if($method == ''){
+			return $this->db->get($this->table)->result();
+		}elseif ($method == 'join'){
+			$this->db->join('jemaat','jemaat.nik=cerai.nik');
+			return $this->db->get($this->table)->result();
+		}
 	}
 
 	// function untuk get data by primary_key

@@ -25,6 +25,10 @@
 			<div class="row">
 				<div class="col-6">
 					<div class="form-group">
+						<label class="form-label">ID Pendeta</label>
+						<input required type="text" maxlength="3" value="<?=$pendeta->id_pendeta?>" class="form-control" name="id_pendeta">
+					</div>
+					<div class="form-group">
 						<label class="form-label">Nomor Surat Pendeta</label>
 						<input required type="text"value="<?=$pendeta->nomor_surat_pendeta?>" class="form-control" name="nomor_surat_pendeta">
 					</div>

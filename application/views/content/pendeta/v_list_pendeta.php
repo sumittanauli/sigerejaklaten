@@ -50,6 +50,7 @@
 			<thead>
 			<tr>
 				<th>No</th>
+				<th>ID Pendeta</th>
 				<th>Nomor Surat Pendeta</th>
 				<th>Nama Pendeta</th>
 				<th>Asal</th>
@@ -69,6 +70,7 @@
 				?>
 				<tr>
 					<td><?= $no++ ?></td>
+					<td><?= $p->id_pendeta ?></td>
 					<td><?= $p->nomor_surat_pendeta ?></td>
 					<td><?= $p->nama_pendeta ?></td>
 					<td><?= $p->asal_pendeta ?></td>

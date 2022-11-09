@@ -2,10 +2,12 @@
 </div>
 <div><!-- Footer -->
 	<div>
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-dark">
 	<div class="container my-auto">
-		<div class="copyright text-center my-auto">
+		<div class="copyright text-center my-auto text-white">
 			<span>Copyright &copy; SISTEM GBI JOGOSETRAN <?= date('Y')?></span>
+			<br><br>
+			<span>Developed By Kelompok PPL 11 <a href="https://ukrim.ac.id/" target="_blank"> UKRIM UNIVERSITY</a> </span>
 		</div>
 	</div>
 </footer>

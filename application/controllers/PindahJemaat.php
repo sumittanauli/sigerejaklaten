@@ -6,13 +6,19 @@ class PindahJemaat extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("ModelPindahJemaat");
+		if(!$this->session->userdata('email')){
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+  			Login Terlebih Dahulu.
+			</div>');
+			redirect('Auth');
+		}
 	}
 
 	public function index()
 	{
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
-		$dataPindahJemaat = $this->ModelPindahJemaat->getAll();
+		$dataPindahJemaat = $this->ModelPindahJemaat->getAll("join");
 		$data = array(
 			"pindahjemaats" => $dataPindahJemaat
 		);
@@ -24,7 +30,9 @@ class PindahJemaat extends CI_Controller
 	//untuk me load tampilan form tambah pindah jemaat
 	public function tambah()
 	{
-		$this->load->view('templates/header');
+		$data['jemaat'] = $this->db->get('jemaat')->result_array();
+
+		$this->load->view('templates/header' ,$data);
 		$this->load->view('templates/sidebar');
 		$this->load->view("content/pindahjemaat/v_add_pindahjemaat");
 		$this->load->view('templates/footer');
@@ -33,7 +41,8 @@ class PindahJemaat extends CI_Controller
 	public function insert()
 	{
 		$data = array(
-			"nama_pindah_jemaat" => $this->input->post("nama_pindah_jemaat"),
+			"nomor_surat_pindahjemaat" => $this->input->post("nomor_surat_pindahjemaat"),
+			"nik" => $this->input->post("nik"),
 			"asal_gereja" => $this->input->post("asal_gereja"),
 			"tujuan_gereja" => $this->input->post("tujuan_gereja"),
 			"tahun_masuk" => $this->input->post("tahun_masuk"),
@@ -57,15 +66,16 @@ class PindahJemaat extends CI_Controller
 
 	public function update()
 	{
-		$id = $this->input->post('id_pindah_jemaat');
+		$id = $this->input->post('nik');
 		$data = array (
-			"nama_pindah_jemaat" => $this->input->post("nama_pindah_jemaat"),
+			"nomor_surat_pindahjemaat" => $this->input->post("nomor_surat_pindahjemaat"),
+			"nik" => $this->input->post("nik"),
 			"asal_gereja" => $this->input->post("asal_gereja"),
 			"tujuan_gereja" => $this->input->post("tujuan_gereja"),
 			"tahun_masuk" => $this->input->post("tahun_masuk"),
 			"tahun_keluar" => $this->input->post("tahun_keluar")
 		);
-		$this->ModelPindahJemaat->update($id, $data);
+		$id = $this->ModelPindahJemaat->update($id, $data);
 		redirect('pindahjemaat');
 	}
 

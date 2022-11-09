@@ -24,7 +24,7 @@
 		<form id="form-tambah-baptis" method="post" action="<?=site_url('baptis/insert')?>" enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="form-label">Nomor Surat Baptis</label>
-				<input required type="text" maxlength="16" class="form-control" name="nomor_surat_baptis">
+				<input required type="number" maxlength="16" class="form-control" name="nomor_surat_baptis">
 			</div>
 			<div class="form-group">
 				<label class="form-label">Nama Jemaat</label>
@@ -37,7 +37,17 @@
 			</div>
 			<div class="form-group">
 				<label class="form-label">Nama Pendeta</label>
-				<input required type="text" class="form-control" name="nama_pendeta_baptis">
+				<select required class="form-control" name="id_pendeta">
+					<option value="" disabled selected>-- PILIH --</option>
+					<?php foreach($pendeta as $p):?>
+						<option value="<?= $p['id_pendeta']?>"><?=$p['nama_pendeta']?></option>
+					<?php endforeach;?>
+<!--					--><?php
+//					foreach ($pendeta as $p){
+//						echo "<option value='$p->id_pendeta'>$p->nama_pendeta</option>";
+//					}
+//					?>
+				</select>
 			</div>
 			<div class="form-group">
 				<label class="form-label">Tempat Baptis</label>

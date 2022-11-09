@@ -25,12 +25,8 @@
 			<div class="row">
 				<div class="col-6">
 					<div class="form-group">
-						<label class="form-label">NIK</label>
-						<input require maxlength="16" value="<?=$jemaat->nik?>" class="form-control" name="nik">
-					</div>
-					<div class="form-group">
-						<label class="form-label">Nomor keluarga</label>
-						<input require maxlength="16" value="<?=$jemaat->nomor_keluarga?>" class="form-control" name="nomor_keluarga">
+						<label class="form-label">Nomor KK</label>
+						<input require type="number" maxlength="16" value="<?=$jemaat->nomor_keluarga?>" class="form-control" name="nomor_keluarga">
 					</div>
 					<div class="form-group">
 						<label class="form-label">Nama Jemaat</label>
@@ -94,52 +90,52 @@
 
 </html>
 
-<!--<script>-->
-<!--	$(function(){-->
-<!--		$("#btn-update-jemaat").on("click", function() {-->
-<!--			let validate = $("#form-update-jemaat").valid()-->
-<!--			if (validate) {-->
-<!--				$("#form-update-jemaat").submit()-->
-<!--			}-->
-<!--		})-->
-<!--		$("#form-update-jemaat").validates({-->
-<!--			rules: {-->
-<!--				nomor_keluarga: {-->
-<!--					digits: true-->
-<!--				},-->
-<!--				nama_jemaat: {-->
-<!--					digits: true-->
-<!--				},-->
-<!--				tempat_lahir_jemaat: {-->
-<!--					digits: true-->
-<!--				},-->
-<!--				tanggal_lahir_jemaat: {-->
-<!--					digits: true-->
-<!--				},-->
-<!--				jenis_kelamin_jemaat: {-->
-<!--					digits: true-->
-<!--				},-->
-<!--				alamat_jemaat: {-->
-<!--					digits: true-->
-<!--				},-->
-<!--				pekerjaan_jemaat: {-->
-<!--					digits: true-->
-<!--				},-->
-<!--				status_jemaat: {-->
-<!--					digits: true-->
-<!--				},-->
-<!--				foto: {-->
-<!--					digits: true-->
-<!--				}-->
-<!--			},-->
-<!--			errorElement: 'span',-->
-<!--			errorPlacement: function(error, element) {-->
-<!--				error.addClass('invalid-feedback');-->
-<!--				element.closest('.form-group').append(error);-->
-<!--			},-->
-<!--			highlight: function(element, errorClass, validClass) {-->
-<!--				$(element).addClass('is-invalid');-->
-<!--			}-->
-<!--		})-->
-<!--	})-->
-<!--</script>-->
+<script>
+	$(function(){
+		$("#btn-update-jemaat").on("click", function() {
+			let validate = $("#form-update-jemaat").valid()
+			if (validate) {
+				$("#form-update-jemaat").submit()
+			}
+		})
+		$("#form-update-jemaat").validates({
+			rules: {
+				nomor_keluarga: {
+					digits: true
+				},
+				nama_jemaat: {
+					digits: true
+				},
+				tempat_lahir_jemaat: {
+					digits: true
+				},
+				tanggal_lahir_jemaat: {
+					digits: true
+				},
+				jenis_kelamin_jemaat: {
+					digits: true
+				},
+				alamat_jemaat: {
+					digits: true
+				},
+				pekerjaan_jemaat: {
+					digits: true
+				},
+				status_jemaat: {
+					digits: true
+				},
+				foto: {
+					digits: true
+				}
+			},
+			errorElement: 'span',
+			errorPlacement: function(error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			}
+		})
+	})
+</script>

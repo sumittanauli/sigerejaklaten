@@ -6,13 +6,19 @@ class Mati extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("ModelMati");
+		if(!$this->session->userdata('email')){
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+  			Login Terlebih Dahulu.
+			</div>');
+			redirect('Auth');
+		}
 	}
 
 	public function index()
 	{
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
-		$dataMati = $this->ModelMati->getAll();
+		$dataMati = $this->ModelMati->getAll("join");
 		$data = array(
 			"matis" => $dataMati
 		);
@@ -23,7 +29,9 @@ class Mati extends CI_Controller
 	//untuk me load tampilan form tambah mati
 	public function tambah()
 	{
-		$this->load->view('templates/header');
+		$data['jemaat'] = $this->db->get('jemaat')->result_array();
+
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
 		$this->load->view("content/mati/v_add_mati");
 		$this->load->view('templates/footer');
@@ -31,46 +39,14 @@ class Mati extends CI_Controller
 
 	public function insert()
 	{
-		$config['upload_path']          = './foto/';
-		$config['allowed_types']        = "gif|jpg|jpeg|png|iso|dmg|zip|rar|doc|docx|xls|xlsx|ppt|pptx|csv|ods|odt|odp|pdf|rtf|sxc|sxi|txt|exe|avi|mpeg|mp3|mp4|3gp";
-		$config['max_size']             = 10000;
-		$config['max_width']            = 10000;
-		$config['max_height']           = 10000;
-
-		$this->load->library('upload', $config);
-
-		if ( ! $this->upload->do_upload('userfile'))
-		{
-			$error = array('error' => $this->upload->display_errors());
-
-			$this->load->view('upload_form', $error);
-		}
-		else
-		{
-			echo "Gagal di tambahkan";
-		}
-		{
-			$foto = $this->upload->data();
-			$foto = $foto['file_name'];
-			$nomor_surat_mati = $this->input->post("nomor_surat_mati", TRUE);
-			$nama_jemaat_mati = $this->input->post("nama_jemaat_mati", TRUE);
-			$tanggal_mati = $this->input->post("tanggal_mati", TRUE);
-			$tempat_mati = $this->input->post("tempat_mati", TRUE);
-			$alasan_mati = $this->input->post("alasan_mati", TRUE);
-		}
 		$data = array(
-			"nomor_surat_mati" => $nomor_surat_mati,
-			"nama_jemaat_mati" => $nama_jemaat_mati,
-			"tanggal_mati" => $tanggal_mati,
-			"tempat_mati" => $tempat_mati,
-			"alasan_mati" => $alasan_mati,
-			"foto" => $foto
+			"nomor_surat_mati" => $this->input->post("nomor_surat_mati", TRUE),
+			"nik" => $this->input->post("nik", TRUE),
+			"tanggal_mati" => $this->input->post("tanggal_mati", TRUE),
+			"tempat_mati" => $this->input->post("tempat_mati", TRUE),
+			"alasan_mati" => $this->input->post("alasan_mati", TRUE)
 		);
 		$id = $this->ModelMati->insertGetId($data);
-		$this->session->set_flashdata('pesan', '<div
-                        class="alert alert-success" role="alert">
-                        Data Berhasil DiTambah!
-                        </div>');
 		redirect('mati');
 	}
 
@@ -88,47 +64,15 @@ class Mati extends CI_Controller
 
 	public function update()
 	{
-		$config['upload_path']          = './foto/';
-		$config['allowed_types']        = "gif|jpg|jpeg|png|iso|dmg|zip|rar|doc|docx|xls|xlsx|ppt|pptx|csv|ods|odt|odp|pdf|rtf|sxc|sxi|txt|exe|avi|mpeg|mp3|mp4|3gp";
-		$config['max_size']             = 10000;
-		$config['max_width']            = 10000;
-		$config['max_height']           = 10000;
-
-		$this->load->library('upload', $config);
-
-		if ( ! $this->upload->do_upload('userfile'))
-		{
-			$error = array('error' => $this->upload->display_errors());
-
-			$this->load->view('upload_form', $error);
-		}
-		else
-		{
-			echo "Gagal di tambahkan";
-		}
-		{
-			$foto = $this->upload->data();
-			$foto = $foto['file_name'];
-			$nomor_surat_mati = $this->input->post("nomor_surat_mati", TRUE);
-			$nama_jemaat_mati = $this->input->post("nama_jemaat_mati", TRUE);
-			$tanggal_mati = $this->input->post("tanggal_mati", TRUE);
-			$tempat_mati = $this->input->post("tempat_mati", TRUE);
-			$alasan_mati = $this->input->post("alasan_mati", TRUE);
-			$id = $this->input->post("id_mati");
-		}
+		$id = $this->input->post('nik');
 		$data = array(
-			"nomor_surat_mati" => $nomor_surat_mati,
-			"nama_jemaat_mati" => $nama_jemaat_mati,
-			"tanggal_mati" => $tanggal_mati,
-			"tempat_mati" => $tempat_mati,
-			"alasan_mati" => $alasan_mati,
-			"foto" => $foto
+			"nomor_surat_mati" => $this->input->post("nomor_surat_mati", TRUE),
+			"nik" => $this->input->post("nik", TRUE),
+			"tanggal_mati" => $this->input->post("tanggal_mati", TRUE),
+			"tempat_mati" => $this->input->post("tempat_mati", TRUE),
+			"alasan_mati" => $this->input->post("alasan_mati", TRUE)
 		);
 		$id = $this->ModelMati->update($id, $data);
-		$this->session->set_flashdata('pesan', '<div
-                        class="alert alert-success" role="alert">
-                        Data Berhasil DiTambah!
-                        </div>');
 		redirect('mati');
 	}
 

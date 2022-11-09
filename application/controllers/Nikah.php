@@ -6,13 +6,19 @@ class Nikah extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("ModelNikah");
+		if(!$this->session->userdata('email')){
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+  			Login Terlebih Dahulu.
+			</div>');
+			redirect('Auth');
+		}
 	}
 
 	public function index()
 	{
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
-		$dataNikah = $this->ModelNikah->getAll();
+		$dataNikah = $this->ModelNikah->getAll("join");
 		$data = array(
 			"nikahs" => $dataNikah
 		);
@@ -23,7 +29,11 @@ class Nikah extends CI_Controller
 	//untuk me load tampilan form tambah data nikah
 	public function tambah()
 	{
-		$this->load->view('templates/header');
+		$this->db->where('jenis_kelamin_jemaat','Laki-Laki');
+		$data['jemaatpria'] = $this->db->get('jemaat')->result_array();
+		$this->db->where('jenis_kelamin_jemaat','Perempuan');
+		$data['jemaatwanita'] = $this->db->get('jemaat')->result_array();
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
 		$this->load->view("content/nikah/v_add_nikah");
 		$this->load->view('templates/footer');
@@ -53,21 +63,19 @@ class Nikah extends CI_Controller
 				$foto = $this->upload->data();
 				$foto = $foto['file_name'];
 				$nomor_surat_nikah = $this->input->post("nomor_surat_nikah", TRUE);
-				$nama_jemaat_nikah1 = $this->input->post("nama_jemaat_nikah1", TRUE);
-				$nama_jemaat_nikah2 = $this->input->post("nama_jemaat_nikah2", TRUE);
+				$nik = $this->input->post("nik", TRUE);
+				$nik_istri = $this->input->post("nik_istri", TRUE);
 				$nama_pendeta_nikah = $this->input->post("nama_pendeta_nikah", TRUE);
 				$tempat_nikah = $this->input->post("tempat_nikah", TRUE);
 				$tanggal_nikah = $this->input->post("tanggal_nikah", TRUE);
-				$tanggal_cerai = $this->input->post("tanggal_cerai", TRUE);
 			}
 		$data = array(
 			"nomor_surat_nikah" => $nomor_surat_nikah,
-			"nama_jemaat_nikah1" => $nama_jemaat_nikah1,
-			"nama_jemaat_nikah2" => $nama_jemaat_nikah2,
+			"nik" => $nik,
+			"nik_istri" => $nik_istri,
 			"nama_pendeta_nikah" => $nama_pendeta_nikah,
 			"tempat_nikah" => $tempat_nikah,
 			"tanggal_nikah" => $tanggal_nikah,
-			"tanggal_cerai" => $tanggal_cerai,
 			"foto" => $foto
 		);
 		$id = $this->ModelNikah->insertGetId($data);
@@ -117,15 +125,13 @@ class Nikah extends CI_Controller
 			$nama_pendeta_nikah = $this->input->post("nama_pendeta_nikah", TRUE);
 			$tempat_nikah = $this->input->post("tempat_nikah", TRUE);
 			$tanggal_nikah = $this->input->post("tanggal_nikah", TRUE);
-			$tanggal_cerai = $this->input->post("tanggal_cerai", TRUE);
-			$id = $this->input->post("id_nikah");
+			$id = $this->input->post("nik");
 		}
 		$data = array(
 			"nomor_surat_nikah" => $nomor_surat_nikah,
 			"nama_pendeta_nikah" => $nama_pendeta_nikah,
 			"tempat_nikah" => $tempat_nikah,
 			"tanggal_nikah" => $tanggal_nikah,
-			"tanggal_cerai" => $tanggal_cerai,
 			"foto" => $foto
 		);
 		$id = $this->ModelNikah->update($id, $data);

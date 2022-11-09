@@ -52,6 +52,7 @@
 				<th>No</th>
 				<th>Nomor Surat Pengurus</th>
 				<th>Nama Pengurus</th>
+				<th>Asal</th>
 				<th>Pendidikan</th>
 				<th>Tanggal Mulai</th>
 				<th>Tanggal Selesai</th>
@@ -68,7 +69,8 @@
 				<tr>
 					<td><?= $no++ ?></td>
 					<td><?= $p->nomor_surat_pengurus ?></td>
-					<td><?= $p->nama_pengurus ?></td>
+					<td><?= $p->nama_jemaat ?></td>
+					<td><?= $p->asal_pengurus ?></td>
 					<td><?= $p->pendidikan_pengurus ?></td>
 					<td><?= $p->tanggal_mulai_pengurus ?></td>
 					<td><?= $p->tanggal_selesai_pengurus?></td>

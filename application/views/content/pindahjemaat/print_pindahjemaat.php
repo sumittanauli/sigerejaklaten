@@ -10,6 +10,7 @@
 			<thead>
 			<tr>
 				<th>No</th>
+				<th>Nomor Surat</th>
 				<th>Nama Jemaat</th>
 				<th>Asal Gereja</th>
 				<th>Tujuan Gereja</th>
@@ -23,7 +24,8 @@
 			foreach ($pindahjemaat as $t) : ?>
 			<tr>
 				<td><?= $no++ ?></td>
-				<td><?= $t->nama_pindah_jemaat ?></td>
+				<td><?= $t->nomor_surat_pindahjemaat ?></td>
+				<td><?= $t->nik ?></td>
 				<td><?= $t->asal_gereja ?></td>
 				<td><?= $t->tujuan_gereja ?></td>
 				<td><?= $t->tahun_masuk ?></td>

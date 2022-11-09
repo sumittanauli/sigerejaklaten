@@ -6,13 +6,19 @@ class Cerai extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("ModelCerai");
+		if(!$this->session->userdata('email')){
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+  			Login Terlebih Dahulu.
+			</div>');
+			redirect('Auth');
+		}
 	}
 
 	public function index()
 	{
 		$this->load->view('templates/header');
 		$this->load->view('templates/sidebar');
-		$dataCerai = $this->ModelCerai->getAll();
+		$dataCerai = $this->ModelCerai->getAll('join');
 		$data = array(
 			"cerais" => $dataCerai
 		);
@@ -23,7 +29,11 @@ class Cerai extends CI_Controller
 	//untuk me load tampilan form tambah baptis
 	public function tambah()
 	{
-		$this->load->view('templates/header');
+		$this->db->where('jenis_kelamin_jemaat','Laki-Laki');
+		$data['jemaatpria'] = $this->db->get('jemaat')->result_array();
+		$this->db->where('jenis_kelamin_jemaat','Perempuan');
+		$data['jemaatwanita'] = $this->db->get('jemaat')->result_array();
+		$this->load->view('templates/header',$data);
 		$this->load->view('templates/sidebar');
 		$this->load->view("content/cerai/v_add_cerai");
 		$this->load->view('templates/footer');
@@ -53,16 +63,16 @@ class Cerai extends CI_Controller
 			$foto = $this->upload->data();
 			$foto = $foto['file_name'];
 			$nomor_surat_cerai = $this->input->post("nomor_surat_cerai", TRUE);
-			$nama_jemaat_cerai1 = $this->input->post("nama_jemaat_cerai1", TRUE);
-			$nama_jemaat_cerai2 = $this->input->post("nama_jemaat_cerai2", TRUE);
+			$nik = $this->input->post("nik", TRUE);
+			$nik_istri = $this->input->post("nik_istri", TRUE);
 			$tanggal_cerai = $this->input->post("tanggal_cerai", TRUE);
 			$tempat_cerai = $this->input->post("tempat_cerai", TRUE);
 			$alasan_cerai = $this->input->post("alasan_cerai", TRUE);
 		}
 		$data = array(
 			"nomor_surat_cerai" => $nomor_surat_cerai,
-			"nama_jemaat_cerai1" => $nama_jemaat_cerai1,
-			"nama_jemaat_cerai2" => $nama_jemaat_cerai2,
+			"nik" => $nik,
+			"nik_istri" => $nik_istri,
 			"tanggal_cerai" => $tanggal_cerai,
 			"tempat_cerai" => $tempat_cerai,
 			"alasan_cerai" => $alasan_cerai,
@@ -112,8 +122,6 @@ class Cerai extends CI_Controller
 			$foto = $this->upload->data();
 			$foto = $foto['file_name'];
 			$nomor_surat_cerai = $this->input->post("nomor_surat_cerai", TRUE);
-			$nama_jemaat_cerai1 = $this->input->post("nama_jemaat_cerai1", TRUE);
-			$nama_jemaat_cerai2 = $this->input->post("nama_jemaat_cerai2", TRUE);
 			$tanggal_cerai = $this->input->post("tanggal_cerai", TRUE);
 			$tempat_cerai = $this->input->post("tempat_cerai", TRUE);
 			$alasan_cerai = $this->input->post("alasan_cerai", TRUE);
@@ -121,8 +129,6 @@ class Cerai extends CI_Controller
 		}
 		$data = array(
 			"nomor_surat_cerai" => $nomor_surat_cerai,
-			"nama_jemaat_cerai1" => $nama_jemaat_cerai1,
-			"nama_jemaat_cerai2" => $nama_jemaat_cerai2,
 			"tanggal_cerai" => $tanggal_cerai,
 			"tempat_cerai" => $tempat_cerai,
 			"alasan_cerai" => $alasan_cerai,

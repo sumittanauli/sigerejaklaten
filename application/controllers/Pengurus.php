@@ -6,6 +6,12 @@ class Pengurus extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("ModelPengurus");
+		if(!$this->session->userdata('email')){
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+  			Login Terlebih Dahulu.
+			</div>');
+			redirect('Auth');
+		}
 	}
 
 	public function index()
@@ -23,7 +29,9 @@ class Pengurus extends CI_Controller
 	//untuk me load tampilan form tambah pengurus
 	public function tambah()
 	{
-		$this->load->view('templates/header');
+		$data['jemaat'] = $this->db->get('jemaat')->result_array();
+
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
 		$this->load->view("content/pengurus/v_add_pengurus");
 		$this->load->view('templates/footer');
@@ -54,6 +62,7 @@ class Pengurus extends CI_Controller
 				$foto = $foto['file_name'];
 				$nomor_surat_pengurus = $this->input->post("nomor_surat_pengurus", TRUE);
 				$nik = $this->input->post("nik", TRUE);
+				$asal_pengurus = $this->input->post("asal_pengurus", TRUE);
 				$pendidikan_pengurus = $this->input->post("pendidikan_pengurus", TRUE);
 				$tanggal_mulai_pengurus = $this->input->post("tanggal_mulai_pengurus", TRUE);
 				$tanggal_selesai_pengurus = $this->input->post("tanggal_selesai_pengurus", TRUE);
@@ -62,6 +71,7 @@ class Pengurus extends CI_Controller
 		$data = array(
 			"nomor_surat_pengurus" => $nomor_surat_pengurus,
 			"nik" => $nik,
+			"asal_pengurus" => $asal_pengurus,
 			"pendidikan_pengurus" => $pendidikan_pengurus,
 			"tanggal_mulai_pengurus" => $tanggal_mulai_pengurus,
 			"tanggal_selesai_pengurus" => $tanggal_selesai_pengurus,
@@ -113,6 +123,7 @@ class Pengurus extends CI_Controller
 			$foto = $foto['file_name'];
 			$nomor_surat_pengurus = $this->input->post("nomor_surat_pengurus", TRUE);
 			$nik = $this->input->post("nik", TRUE);
+			$asal_pengurus = $this->input->post("asal_pengurus", TRUE);
 			$pendidikan_pengurus = $this->input->post("pendidikan_pengurus", TRUE);
 			$tanggal_mulai_pengurus = $this->input->post("tanggal_mulai_pengurus", TRUE);
 			$tanggal_selesai_pengurus = $this->input->post("tanggal_selesai_pengurus", TRUE);
@@ -122,6 +133,7 @@ class Pengurus extends CI_Controller
 		$data = array(
 			"nomor_surat_pengurus" => $nomor_surat_pengurus,
 			"nik" => $nik,
+			"asal_pengurus" => $asal_pengurus,
 			"pendidikan_pengurus" => $pendidikan_pengurus,
 			"tanggal_mulai_pengurus" => $tanggal_mulai_pengurus,
 			"tanggal_selesai_pengurus" => $tanggal_selesai_pengurus,

@@ -28,7 +28,12 @@
 			</div>
 			<div class="form-group">
 				<label class="form-label">Nama Jemaat</label>
-				<input required type="text" class="form-control" name="nama_jemaat_mati">
+				<select required class="form-control" name="nik">
+					<option value="" disabled selected>-- PILIH --</option>
+					<?php foreach($jemaat as $j):?>
+						<option value="<?= $j['nik']?>"><?=$j['nama_jemaat']?></option>
+					<?php endforeach;?>
+				</select>
 			</div>
 			<div class="form-group">
 				<label class="form-label">Tanggal Mati</label>
@@ -47,10 +52,6 @@
 					<option value="Kecelakaan">Kecelakaan</option>
 					<option value="Dll">Dll</option>
 				</select>
-			</div>
-			<div class="form-group">
-				<label class="form-label">Foto</label>
-				<input require type="file" class="form-control" name="userfile" size="20" required="">
 			</div>
 
 	</div>

@@ -12,6 +12,7 @@ class ModelBaptis extends CI_Model
 			return $this->db->get($this->table)->result();
 		}elseif ($method == 'join'){
 			$this->db->join('jemaat','jemaat.nik=baptis.nik');
+			$this->db->join('pendeta','pendeta.id_pendeta=baptis.id_pendeta');
 			return $this->db->get($this->table)->result();
 		}
 

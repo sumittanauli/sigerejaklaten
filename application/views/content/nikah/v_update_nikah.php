@@ -27,14 +27,6 @@
 				<input required type="text"value="<?=$nikah->nomor_surat_nikah?>" class="form-control" name="nomor_surat_nikah">
 			</div>
 			<div class="form-group">
-				<label class="form-label">Nama Jemaat Pria</label>
-				<input required type="text" maxlength="16"value="<?=$nikah->nama_jemaat_nikah1?>" class="form-control" name="nama_jemaat_nikah1">
-			</div>
-			<div class="form-group">
-				<label class="form-label">Nama Jemaat Wanita</label>
-				<input required type="text" value="<?=$nikah->nama_jemaat_nikah2?>" class="form-control" name="nama_jemaat_nikah2">
-			</div>
-			<div class="form-group">
 				<label class="form-label">Nama Pendeta</label>
 				<input required type="text"value="<?=$nikah->nama_pendeta_nikah?>" class="form-control" name="nama_pendeta_nikah">
 			</div>
@@ -47,14 +39,10 @@
 				<input required type="date"value="<?=$nikah->tanggal_nikah?>" class="form-control" name="tanggal_nikah">
 			</div>
 			<div class="form-group">
-				<label class="form-label">Tanggal Bercerai</label>
-				<input type="date"value="<?=$nikah->tanggal_cerai?>" class="form-control" name="tanggal_cerai">
-			</div>
-			<div class="form-group">
 				<label class="form-label">Foto</label>
 				<input require type="file"value="<?=$nikah->foto?>" class="form-control" name="userfile" size="20" required="">
 			</div>
-			<input type="hidden" name="id_nikah" value="<?=$nikah->id_nikah?>">
+			<input type="hidden" name="nik" value="<?=$nikah->nik?>">
 
 	</div>
 	<div class="card-footer">

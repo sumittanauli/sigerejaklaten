@@ -64,21 +64,23 @@
 			<?php
 			$no = 1;
 			foreach ($cerais as $c) {
+					$this->db->where('nik',$c->nik_istri);
+					$istri = $this->db->get('jemaat')->row();
 				?>
 				<tr>
 					<td><?= $no++ ?></td>
 					<td><?= $c->nomor_surat_cerai ?></td>
-					<td><?= $c->nama_jemaat_cerai1 ?></td>
-					<td><?= $c->nama_jemaat_cerai2 ?></td>
+					<td><?= $c->nama_jemaat ?></td>
+					<td><?= $istri->nama_jemaat ?></td>
 					<td><?= $c->tanggal_cerai ?></td>
 					<td><?= $c->tempat_cerai ?></td>
 					<td><?= $c->alasan_cerai ?></td>
 					<td><img src="<?= base_url().'/foto/' . $c->foto ?>" width="100px;"></td>
 					<td>
-						<a href="<?=site_url("cerai/ubah/$c->id_cerai")?>" class="btn btn-warning btn-sm">
+						<a href="<?=site_url("cerai/ubah/$c->nik")?>" class="btn btn-warning btn-sm">
 							<i class="fa fa-pencil"></i>
 						</a>
-						<a href="#" data-id="<?=$c->id_cerai?>" class="btn btn-danger btn-sm btn-delete-cerai">
+						<a href="#" data-id="<?=$c->nik?>" class="btn btn-danger btn-sm btn-delete-cerai">
 							<i class="fa fa-trash"></i>
 						</a>
 					</td>

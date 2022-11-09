@@ -27,14 +27,6 @@
 				<input required maxlength="16" value="<?=$cerai->nomor_surat_cerai?>" class="form-control" name="nomor_surat_cerai">
 			</div>
 			<div class="form-group">
-				<label class="form-label">Nama Jemaat Pria</label>
-				<input required type="text"value="<?=$cerai->nama_jemaat_cerai1?>" class="form-control" name="nama_jemaat_cerai1">
-			</div>
-			<div class="form-group">
-				<label class="form-label">Nama Jemaat Wanita</label>
-				<input required type="text"value="<?=$cerai->nama_jemaat_cerai2?>" class="form-control" name="nama_jemaat_cerai2">
-			</div>
-			<div class="form-group">
 				<label class="form-label">Tempat Cerai</label>
 				<input required type="text"value="<?=$cerai->tempat_cerai?>" class="form-control" name="tempat_cerai">
 			</div>
@@ -55,7 +47,7 @@
 				<label class="form-label">Foto</label>
 				<input require type="file"value="<?=$cerai->foto?>" class="form-control" name="userfile" size="20" required="">
 			</div>
-			<input type="hidden" name="id_cerai" value="<?=$cerai->id_cerai?>">
+			<input type="hidden" name="nik" value="<?=$cerai->nik?>">
 
 	</div>
 	<div class="card-footer">

@@ -41,7 +41,7 @@
 			<i class="fa fa-plus"></i> Tambah Data Pernikahan
 		</a>
 		<a href="<?=site_url('nikah/print')?>" class="btn btn-outline-dark btn-sm mb-3">
-			<i class="fa fa-print"></i> Print
+			<i class="fa fa-print"></i> Print dan Export PDF
 		</a>
 <!--		<a href="--><?//=site_url('nikah/pdf')?><!--" class="btn btn-primary btn-sm mb-3">-->
 <!--			<i class="fa fa-file-pdf-o"></i> Export PDF-->
@@ -56,7 +56,6 @@
 				<th>Nama Pendeta</th>
 				<th>Tempat Menikah</th>
 				<th>Tanggal Menikah</th>
-				<th>Tanggal Bercerai</th>
 				<th>Foto</th>
 				<th>Action</th>
 			</tr>
@@ -65,22 +64,23 @@
 			<?php
 			$no = 1;
 			foreach ($nikahs as $n) {
+				    $this->db->where('nik',$n->nik_istri);
+					$istri = $this->db->get('jemaat')->row();
 				?>
 				<tr>
 					<td><?= $no++ ?></td>
 					<td><?= $n->nomor_surat_nikah ?></td>
-					<td><?= $n->nama_jemaat_nikah1 ?></td>
-					<td><?= $n->nama_jemaat_nikah2 ?></td>
+					<td><?= $n->nama_jemaat ?></td>
+					<td><?= $istri->nama_jemaat ?></td>
 					<td><?= $n->nama_pendeta_nikah ?></td>
 					<td><?= $n->tempat_nikah ?></td>
 					<td><?= $n->tanggal_nikah ?></td>
-					<td><?= $n->tanggal_cerai ?></td>
 					<td><img src="<?= base_url().'/foto/' . $n->foto ?>" width="100px;"></td>
 					<td>
-						<a href="<?=site_url("nikah/ubah/$n->id_nikah")?>" class="btn btn-warning btn-sm">
+						<a href="<?=site_url("nikah/ubah/$n->nik")?>" class="btn btn-warning btn-sm">
 							<i class="fa fa-pencil"></i>
 						</a>
-						<a href="#" data-id="<?=$n->id_nikah?>" class="btn btn-danger btn-sm btn-delete-nikah">
+						<a href="#" data-id="<?=$n->nik?>" class="btn btn-danger btn-sm btn-delete-nikah">
 							<i class="fa fa-trash"></i>
 						</a>
 					</td>

@@ -6,6 +6,12 @@ class Jemaat extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("ModelJemaat");
+		if(!$this->session->userdata('email')){
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+  			Login Terlebih Dahulu.
+			</div>');
+			redirect('Auth');
+		}
 	}
 
 	public function index()
@@ -162,5 +168,16 @@ class Jemaat extends CI_Controller
 	{
 		$dataJemaat['jemaat'] = $this->ModelJemaat->getAll();
 		$this->load->view('content/jemaat/print_jemaat', $dataJemaat);
+	}
+
+	public function ajaxCekNIK($nik)
+	{
+		$this->db->where('nik',$nik);
+		$cek = $this->db->get('jemaat')->row();
+		if($cek){
+			echo '200';
+		} else {
+			echo '201';
+		}
 	}
 }

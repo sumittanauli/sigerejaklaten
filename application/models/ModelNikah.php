@@ -3,12 +3,17 @@
 class ModelNikah extends CI_Model
 {
 	var $table = "nikah";
-	var $primaryKey = "id_nikah";
+	var $primaryKey = "nik";
 
 	// function untuk get all data nikah
-	public function getAll()
+	public function getAll($method = '')
 	{
-		return $this->db->get($this->table)->result();
+		if($method == ''){
+			return $this->db->get($this->table)->result();
+		}elseif ($method == 'join'){
+			$this->db->join('jemaat','jemaat.nik=nikah.nik');
+			return $this->db->get($this->table)->result();
+		}
 	}
 
 	// function untuk get data by primary_key

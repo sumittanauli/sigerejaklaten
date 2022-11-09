@@ -28,11 +28,21 @@
 			</div>
 			<div class="form-group">
 				<label class="form-label">Nama Jemaat Pria</label>
-				<input required type="text" class="form-control" name="nama_jemaat_cerai1">
+				<select required class="form-control" name="nik">
+					<option value="" disabled selected>-- PILIH --</option>
+					<?php foreach($jemaatpria as $jp):?>
+						<option value="<?= $jp['nik']?>"><?=$jp['nama_jemaat']?></option>
+					<?php endforeach;?>
+				</select>
 			</div>
 			<div class="form-group">
 				<label class="form-label">Nama Jemaat Wanita</label>
-				<input required type="text" class="form-control" name="nama_jemaat_cerai2">
+				<select required class="form-control" name="nik_istri">
+					<option value="" disabled selected>-- PILIH --</option>
+					<?php foreach($jemaatwanita as $jw):?>
+						<option value="<?= $jw['nik']?>"><?=$jw['nama_jemaat']?></option>
+					<?php endforeach;?>
+				</select>
 			</div>
 			<div class="form-group">
 				<label class="form-label">Tanggal Cerai</label>

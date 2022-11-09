@@ -2,16 +2,23 @@
 <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
 	<!-- Sidebar - Brand -->
-	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= site_url('admin') ?>">
 		<div class="sidebar-brand-icon">
 			<i class="fas fa-church "></i>
 		</div>
+<!--		<div class="sidebar-brand-icon">-->
+<!--			<img src="--><?//= base_url('/assets/img/Logo GBI Jogosetran.png') ?><!--" class="img-circle elevation-2" width="40" height="43">-->
+<!--		</div>-->
 		<div class="sidebar-brand-text mx-3">GBI JOGOSETRAN </div>
 	</a>
 
 	<!-- Divider -->
 	<hr class="sidebar-divider ">
 
+	<!-- Heading -->
+	<div class="sidebar-heading" style="color: #fafafa;">
+		Menu
+	</div>
 
 	<!-- QUERY MENU -->
 
@@ -66,43 +73,62 @@
 
 	<?php endforeach;?>
 
-	<li class="nav-item bg-dark">
-		<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-		   aria-controls="collapseTwo">
-			<i class="fas fa-book"></i>
-			<span>DOKUMEN</span>
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('Admin')?>">
+			<i class="fas fa-fw fa-tachometer-alt"></i>
+			<span>DASHBOARD</span>
 		</a>
-		<div id="collapseTwo" class="collapse show bg-dark" aria-labelledby="headingTwo"
-			 data-parent="#accordionSidebar">
-			<div class="bg-gradient-dark py-2 collapse-inner rounded">
-				<h6 class="collapse-header">Data</h6>
-				<a class="collapse-item alert-dark dark mb-3" href="<?= base_url('Jemaat')?>">
-					<i class="fa fa-users"></i>  Data Jemaat
-				</a>
-				<a class="collapse-item alert-dark dark mb-3" href="<?= base_url('Pendeta')?>">
-					<i class="fas fa-user-tie"></i>  Data Pendeta
-				</a>
-				<a class="collapse-item alert-dark dark mb-3" href="<?= base_url('Pengurus')?>">
-					<i class="fas fa-user-friends"></i>  Data Pengurus
-				</a>
-				<a class="collapse-item alert-dark dark mb-3" href="<?= base_url('Baptis')?>">
-					<i class="fas fa-swimming-pool"></i>  Data Baptis
-				</a>
-				<a class="collapse-item alert-dark dark mb-3" href="<?= base_url('Nikah')?>">
-					<i class="fas fa-ring"></i>  Data Pernikahan
-				</a>
-				<a class="collapse-item alert-dark dark mb-3" href="<?= base_url('PindahJemaat')?>">
-					<i class="fas fa-users-slash"></i>  Data Pindah Jemaat
-				</a>
-				<a class="collapse-item alert-dark dark mb-3" href="<?= base_url('Cerai')?>">
-					<i class="fas fa-heart-broken"></i>  Data Perceraian
-				</a>
-				<a class="collapse-item alert-dark dark mb-3" href="<?= base_url('Mati')?>">
-					<i class="fas fa-cross"></i>  Data Kematian
-				</a>
-			</div>
-		</div>
 	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('Jemaat')?>">
+			<i class="fa fa-users"></i>
+			<span>DATA JEMAAT</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('Pendeta'); ?>">
+			<i class="fas fa-user-tie"></i>
+			<span>DATA PENDETA</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('Pengurus'); ?>">
+			<i class="fas fa-user-friends"></i>
+			<span>DATA PENGURUS</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('Baptis'); ?>">
+			<i class="fas fa-swimming-pool"></i>
+			<span>DATA BAPTIS</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('Nikah'); ?>">
+			<i class="fas fa-ring"></i>
+			<span>DATA PERNIKAHAN</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('PindahJemaat'); ?>">
+			<i class="fas fa-users-slash"></i>
+			<span>DATA PINDAH JEMAAT</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('Cerai'); ?>">
+			<i class="fas fa-heart-broken"></i>
+			<span>DATA PERCERAIAN</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="<?= base_url('Mati'); ?>">
+			<i class="fas fa-cross"></i>
+			<span>DATA KEMATIAN</span>
+		</a>
+	</li>
+
+
 
 	<!-- Nav Item - Charts -->
 	<li class="nav-item bg-dark">

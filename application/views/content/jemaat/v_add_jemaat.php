@@ -31,11 +31,11 @@
 				<div class="col-6">
 					<div class="form-group">
 						<label class="form-label">NIK</label>
-						<input required maxlength="16" class="form-control" name="nik">
+						<input onchange="cekNIK()" required type="number" maxlength="16" class="form-control" name="nik" id="nik">
 					</div>
 					<div class="form-group">
-						<label class="form-label">Nomor Keluarga</label>
-						<input required maxlength="16" class="form-control" name="nomor_keluarga">
+						<label class="form-label">Nomor KK</label>
+						<input required type="number" maxlength="16" class="form-control" name="nomor_keluarga">
 					</div>
 					<div class="form-group">
 						<label class="form-label">Nama</label>
@@ -49,6 +49,8 @@
 						<label class="form-label">Tanggal Lahir</label>
 						<input required type="date" class="form-control" name="tanggal_lahir_jemaat">
 					</div>
+				</div>
+				<div class="col-6">
 					<div class="form-group">
 						<label for="jenis_kelamin_jemaat">Jenis Kelamin</label>
 						<select required name="jenis_kelamin_jemaat" id="jenis_kelamin_jemaat" class="form-control">
@@ -57,8 +59,6 @@
 							<option value="Perempuan">Perempuan</option>
 						</select>
 					</div>
-				</div>
-				<div class="col-6">
 					<div class="form-group">
 						<label class="form-label">Alamat</label>
 						<input required type="text" class="form-control" name="alamat_jemaat">
@@ -98,6 +98,24 @@
 </body>
 
 </html>
+<script>
+	function cekNIK(){
+		var nik = document.getElementById('nik');
+		var ajax = new XMLHttpRequest();
+		ajax.onreadystatechange = function(){
+			if(ajax.readyState == 4 && ajax.status == 200)
+			{
+				if(ajax.responseText == '200'){
+					alert('NIK yang anda isi sudah digunakan');
+					// nik.setAttribute('placeholder',nik.value);
+					nik.value = '';
+				}
+			}
+		}
+		ajax.open('GET','<?=base_url()?>Jemaat/ajaxCekNIK/'+nik.value,true);
+		ajax.send();
+	}
+</script>
 <!--<script>-->
 <!--	$(function () {-->
 <!--		$("#btn-save-jemaat").on("click", function() {-->

@@ -68,7 +68,7 @@
 					<td><?= $no++ ?></td>
 					<td><?= $b->nomor_surat_baptis ?></td>
 					<td><?= $b->nama_jemaat ?></td>
-					<td><?= $b->nama_pendeta_baptis ?></td>
+					<td><?= $b->nama_pendeta ?></td>
 					<td><?= $b->tempat_baptis ?></td>
 					<td><?= $b->tanggal_baptis ?></td>
 					<td><img src="<?= base_url().'/foto/' . $b->foto ?>" width="100px;"></td>

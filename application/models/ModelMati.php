@@ -3,12 +3,17 @@
 class ModelMati extends CI_Model
 {
 	var $table = "mati";
-	var $primaryKey = "id_mati";
+	var $primaryKey = "nik";
 
 	// function untuk get all data kematian
-	public function getAll()
+	public function getAll($method = '')
 	{
-		return $this->db->get($this->table)->result();
+		if($method == ''){
+			return $this->db->get($this->table)->result();
+		}elseif ($method == 'join'){
+			$this->db->join('jemaat','jemaat.nik=mati.nik');
+			return $this->db->get($this->table)->result();
+		}
 	}
 
 	// function untuk get data by primary_key

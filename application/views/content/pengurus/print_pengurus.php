@@ -25,7 +25,7 @@
 			<tr>
 				<td><?= $no++ ?></td>
 				<td><?= $p->nomor_surat_pengurus ?></td>
-				<td><?= $p->nama_pengurus ?></td>
+				<td><?= $p->nik ?></td>
 				<td><?= $p->tanggal_mulai_pengurus ?></td>
 				<td><?= $p->tanggal_selesai_pengurus?></td>
 				<td><?= $p->status_pengurus ?></td>

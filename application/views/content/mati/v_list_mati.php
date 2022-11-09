@@ -55,7 +55,6 @@
 				<th>Tanggal Mati</th>
 				<th>Tempat Mati</th>
 				<th>Alasan</th>
-				<th>Foto</th>
 				<th>Action</th>
 			</tr>
 			</thead>
@@ -67,16 +66,15 @@
 				<tr>
 					<td><?= $no++ ?></td>
 					<td><?= $m->nomor_surat_mati ?></td>
-					<td><?= $m->nama_jemaat_mati ?></td>
+					<td><?= $m->nama_jemaat ?></td>
 					<td><?= $m->tanggal_mati ?></td>
 					<td><?= $m->tempat_mati ?></td>
 					<td><?= $m->alasan_mati ?></td>
-					<td><img src="<?= base_url().'/foto/' . $m->foto ?>" width="100px;"></td>
 					<td>
-						<a href="<?=site_url("mati/ubah/$m->id_mati")?>" class="btn btn-warning btn-sm">
+						<a href="<?=site_url("mati/ubah/$m->nik")?>" class="btn btn-warning btn-sm">
 							<i class="fa fa-pencil"></i>
 						</a>
-						<a href="#" data-id="<?=$m->id_mati?>" class="btn btn-danger btn-sm btn-delete-mati">
+						<a href="#" data-id="<?=$m->nik?>" class="btn btn-danger btn-sm btn-delete-mati">
 							<i class="fa fa-trash"></i>
 						</a>
 					</td>

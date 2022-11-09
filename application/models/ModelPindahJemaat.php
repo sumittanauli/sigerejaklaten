@@ -3,12 +3,17 @@
 class ModelPindahJemaat extends CI_Model
 {
 	var $table = "pindahjemaat";
-	var $primaryKey = "id_pindah_jemaat";
+	var $primaryKey = "nik";
 
 	// function untuk get all data pindah jemaat
-	public function getAll()
+	public function getAll($method = '')
 	{
-		return $this->db->get($this->table)->result();
+		if($method == ''){
+			return $this->db->get($this->table)->result();
+		}elseif ($method == 'join'){
+			$this->db->join('jemaat','jemaat.nik=pindahjemaat.nik');
+			return $this->db->get($this->table)->result();
+		}
 	}
 
 	// function untuk get data by primary_key

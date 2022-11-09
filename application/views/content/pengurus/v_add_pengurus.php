@@ -26,24 +26,45 @@
 				<div class="col-6">
 					<div class="form-group">
 						<label class="form-label">Nomor Surat Pengurus</label>
-						<input required type="text" maxlength="16" class="form-control" name="nomor_surat_pengurus">
+						<input required type="number" maxlength="16" class="form-control" name="nomor_surat_pengurus">
 					</div>
 					<div class="form-group">
 						<label class="form-label">Nama Pengurus</label>
 						<select required class="form-control" name="nik">
 							<option value="" disabled selected>-- PILIH --</option>
 							<?php foreach($jemaat as $j):?>
-								<option value="<?= $j['nik']?>"><?=$j['nama_pengurus']?></option>
+								<option value="<?= $j['nik']?>"><?=$j['nama_jemaat']?></option>
 							<?php endforeach;?>
 						</select>
 					</div>
-
+					<div class="form-group">
+						<label class="form-label">Asal</label>
+						<input required type="text" class="form-control" name="asal_pengurus">
+					</div>
+					<div class="form-group">
+						<label for="pendidikan_pengurus">Pendidikan</label>
+						<select required name="pendidikan_pengurus" id="pendidikan_pengurus" class="form-control">
+							<option selected disabled>Pilih Pendidikan</option>
+							<option value="Tidak Sekolah">Tidak Sekolah</option>
+							<option value="SD">SD</option>
+							<option value="SMP">SMP</option>
+							<option value="SLTA">SLTA</option>
+							<option value="SLTU">SLTU</option>
+							<option value="D1">D1</option>
+							<option value="D2">D2</option>
+							<option value="D3">D3</option>
+							<option value="S1">S1</option>
+							<option value="S2">S2</option>
+							<option value="S3">S3</option>
+							<option value="Dll">Dan Lain Lain</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-6">
 					<div class="form-group">
 						<label class="form-label">Tanggal Mulai </label>
 						<input required type="date" class="form-control" name="tanggal_mulai_pengurus">
 					</div>
-				</div>
-				<div class="col-6">
 					<div class="form-group">
 						<label class="form-label">Tanggal Selesai</label>
 						<input required type="date" class="form-control" name="tanggal_selesai_pengurus">

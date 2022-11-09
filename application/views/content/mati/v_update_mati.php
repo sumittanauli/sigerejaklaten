@@ -27,10 +27,6 @@
 				<input required maxlength="16" value="<?=$mati->nomor_surat_mati?>" class="form-control" name="nomor_surat_mati">
 			</div>
 			<div class="form-group">
-				<label class="form-label">Nama Jemaat</label>
-				<input required type="text"value="<?=$mati->nama_jemaat_mati?>" class="form-control" name="nama_jemaat_mati">
-			</div>
-			<div class="form-group">
 				<label class="form-label">Tempat Mati</label>
 				<input required type="text"value="<?=$mati->tempat_mati?>" class="form-control" name="tempat_mati">
 			</div>
@@ -48,11 +44,7 @@
 					<option value="Dll">Dll</option>
 				</select>
 			</div>
-			<div class="form-group">
-				<label class="form-label">Foto</label>
-				<input require type="file"value="<?=$mati->foto?>" class="form-control" name="userfile" size="20" required="">
-			</div>
-			<input type="hidden" name="id_mati" value="<?=$mati->id_mati?>">
+			<input type="hidden" name="nik" value="<?=$mati->nik?>">
 
 	</div>
 	<div class="card-footer">
@@ -92,9 +84,6 @@
 					digits: true
 				},
 				alasan_mati: {
-					digits: true
-				},
-				foto: {
 					digits: true
 				}
 			},

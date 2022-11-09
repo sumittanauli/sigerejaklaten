@@ -50,6 +50,7 @@
 			<thead>
 			<tr>
 				<th>No</th>
+				<th>Nomor Surat</th>
 				<th>Nama Jemaat</th>
 				<th>Asal Gereja</th>
 				<th>Tujuan Gereja</th>
@@ -65,16 +66,17 @@
 				?>
 				<tr>
 					<td><?= $no++ ?></td>
-					<td><?= $t->nama_pindah_jemaat ?></td>
+					<td><?= $t->nomor_surat_pindahjemaat ?></td>
+					<td><?= $t->nama_jemaat ?></td>
 					<td><?= $t->asal_gereja ?></td>
 					<td><?= $t->tujuan_gereja ?></td>
 					<td><?= $t->tahun_masuk ?></td>
 					<td><?= $t->tahun_keluar ?></td>
 					<td>
-						<a href="<?=site_url("pindahjemaat/ubah/$t->id_pindah_jemaat")?>" class="btn btn-warning btn-sm">
+						<a href="<?=site_url("pindahjemaat/ubah/$t->nik")?>" class="btn btn-warning btn-sm">
 							<i class="fa fa-pencil"></i>
 						</a>
-						<a href="#" data-id="<?=$t->id_pindah_jemaat?>" class="btn btn-danger btn-sm btn-delete-pindahjemaat">
+						<a href="#" data-id="<?=$t->nik?>" class="btn btn-danger btn-sm btn-delete-pindahjemaat">
 							<i class="fa fa-trash"></i>
 						</a>
 					</td>

@@ -24,20 +24,7 @@
 		<form id="form-update-baptis" method="post" action="<?=site_url('baptis/update')?>"enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="form-label">Nomor Surat Baptis</label>
-				<input required type="text"value="<?=$baptis->nomor_surat_baptis?>" class="form-control" name="nomor_surat_baptis">
-			</div>
-			<div class="form-group">
-				<label class="form-label">Nama Jemaat</label>
-				<select required class="form-control" name="nik">
-					<option value="" disabled selected>-- PILIH --</option>
-					<?php foreach($jemaat as $j):?>
-						<option value="<?=$baptis-> $j['nik']?>"><?=$j['nama_jemaat']?></option>
-					<?php endforeach;?>
-				</select>
-			</div>
-			<div class="form-group">
-				<label class="form-label">Nama Pendeta</label>
-				<input required type="text"value="<?=$baptis->nama_pendeta_baptis?>" class="form-control" name="nama_pendeta_baptis">
+				<input required type="number"value="<?=$baptis->nomor_surat_baptis?>" class="form-control" name="nomor_surat_baptis">
 			</div>
 			<div class="form-group">
 				<label class="form-label">Tempat Baptis</label>
@@ -51,7 +38,7 @@
 				<label class="form-label">Foto</label>
 				<input require type="file"value="<?=$baptis->foto?>" class="form-control" name="userfile" size="20" required="">
 			</div>
-			<input type="hidden" name="id_baptis" value="<?=$baptis->nik?>">
+			<input type="hidden" name="nik" value="<?=$baptis->nik?>">
 
 	</div>
 	<div class="card-footer">

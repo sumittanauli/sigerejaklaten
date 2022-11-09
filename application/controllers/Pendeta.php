@@ -6,6 +6,12 @@ class Pendeta extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("ModelPendeta");
+		if(!$this->session->userdata('email')){
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+  			Login Terlebih Dahulu.
+			</div>');
+			redirect('Auth');
+		}
 	}
 
 	public function index()
@@ -52,6 +58,7 @@ class Pendeta extends CI_Controller
 			{
 				$foto = $this->upload->data();
 				$foto = $foto['file_name'];
+				$id_pendeta = $this->input->post("id_pendeta", TRUE);
 				$nomor_surat_pendeta = $this->input->post("nomor_surat_pendeta", TRUE);
 				$nama_pendeta = $this->input->post("nama_pendeta", TRUE);
 				$asal_pendeta = $this->input->post("asal_pendeta", TRUE);
@@ -62,6 +69,7 @@ class Pendeta extends CI_Controller
 				$status_pendeta = $this->input->post("status_pendeta", TRUE);
 			}
 		$data = array(
+			"id_pendeta" => $id_pendeta,
 			"nomor_surat_pendeta" => $nomor_surat_pendeta,
 			"nama_pendeta" => $nama_pendeta,
 			"asal_pendeta" => $asal_pendeta,
@@ -115,6 +123,7 @@ class Pendeta extends CI_Controller
 		{
 			$foto = $this->upload->data();
 			$foto = $foto['file_name'];
+			$id_pendeta = $this->input->post("id_pendeta", TRUE);
 			$nomor_surat_pendeta = $this->input->post("nomor_surat_pendeta", TRUE);
 			$nama_pendeta = $this->input->post("nama_pendeta", TRUE);
 			$asal_pendeta = $this->input->post("asal_pendeta", TRUE);
@@ -126,6 +135,7 @@ class Pendeta extends CI_Controller
 			$id = $this->input->post("id_pendeta");
 		}
 		$data = array(
+			"id_pendeta" => $id_pendeta,
 			"nomor_surat_pendeta" => $nomor_surat_pendeta,
 			"nama_pendeta" => $nama_pendeta,
 			"asal_pendeta" => $asal_pendeta,
